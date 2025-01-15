@@ -1,0 +1,67 @@
+#include <iostream>
+using namespace std; //added namespace so i don´t need to use std:: all the time
+
+
+//output that shows all numbers in the Array
+void outPutArray(int size, int *arr) {
+    cout << "Whole Array: " << '\n';
+    for (int i = 0; i < size; i++) { //this loop goes through every element in the array and displays it
+        cout << arr[i] << '\n'; //it will get displayed here 
+    }
+}
+
+
+//shows the biggest number in the array
+int biggestNumber(int size, int *arr) {
+    int max = arr[0];
+
+    for (int i = 0; i < size; i++) {
+        if (arr[i] > max) { //in every loop this code will get executed and every number will be checked if its bigger then the number before
+            max = arr[i]; //biggest number will be set to the integer max
+        }
+    }
+    return max; //returns the biggest number, so we can use it in the main function
+}
+
+
+// function that returns the sum of all numbers in the array
+int sumArray(int size, int *arr) {
+    int sum = 0;
+
+    for (int i = 0;i < size; i++) {
+        sum += arr[i]; //calculates every element in the array after one loop with the calculated number before
+    }
+    return sum; 
+}
+
+
+int main() {
+    int size;
+
+    cout << "Size of the Array:" << '\n';
+    cin >> size; //user input for the size of the array (how much elements we can store)
+
+    int *arr = new int[size]; //here a pointer named arr is created with the size of the users Input
+
+    for (int i = 0; i < size; i++) {
+        cout << "Elements of the Array:" << '\n'; //user can decide wich numbers should be in the array
+        cin >> arr[i];
+    }
+
+    outPutArray(size, arr); //function gets called
+
+    cout << "Biggest Number:" << '\n';
+
+    int max = biggestNumber(size, arr);
+    cout << max << '\n';
+
+    cout << "Sum of the Whole array:" << '\n';
+    int sum = sumArray(size, arr);
+    cout << sum;
+
+    delete[] arr; //frees the memory allocated dynamic storage for arr but if pointer gets called it will display memory adress
+
+    arr = nullptr; // Sets the pointer to nullptr to ensure it no longer points to freed memory, preventing potential access to invalid memory.
+
+    return 0;
+}
