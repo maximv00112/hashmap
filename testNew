@@ -1,0 +1,66 @@
+#include <iostream>
+#include <unordered_map>
+
+using namespace std;
+
+struct students {
+    string name;
+    int ID;
+
+};
+
+int addStudent(int index, unordered_map<int, students>& studentMap) { // & per referenz
+    int loop = 3;
+    for (int i = 0; i < loop; i++) {
+        string answer;
+        string name;
+        int ID;
+        cout << "Do you want to add a student?";
+        cin >> answer;
+
+        if (answer == "yes") {
+            index + 1;
+            cout << "Name: " << '\n';
+            cin >> name;
+            cout << "ID: " << '\n';
+            cin >> ID;
+
+            studentMap[index] = {name, ID};
+        }
+        else {
+            return 0;
+        }
+    }
+        return index;
+}
+
+void menu() {
+    int index = 0;
+    unordered_map<int, students> studentMap;
+
+    
+}
+
+
+
+int main() {
+    string choice;
+
+    int index;
+    unordered_map<int, students> studentMap;
+
+    addStudent(index, studentMap);
+
+    cout << "Do you want to view all Students?";
+    cin >>  choice;
+    
+    if (choice == "yes") {
+        for (auto students: studentMap) {
+            cout << studentMap[index].name << studentMap[index].ID;
+           // cout << studentMap[2].name << studentMap[2].ID;
+
+        }
+        
+    }
+    
+}
